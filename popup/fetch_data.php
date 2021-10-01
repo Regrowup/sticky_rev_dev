@@ -77,11 +77,23 @@ return $days;
 
 }
 $qw=$_GET['q'];
-$delay=$_GET["delay"];
-for($i=0;$i<=$delay;$i++){
 
-while($i){
-    
+$delay=$_GET["delay"];
+
+function countDown($de) {
+for($i=1;$i<=$de;$i++){
+if($i<=$de){
+  return 1;
+}else if($i==$de){
+    return 0;
+}else{
+    return 0;
+}
+}
+}
+
+$dely_count=countDown($delay);
+while($dely_count==1){
     $sql = "SELECT * FROM sticky_review WHERE st_user='$qw' ORDER BY st_id DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
 
@@ -162,6 +174,9 @@ while($i){
         echo "0 results";
     }
 }
+    
+    
+//}
 
 
 }
